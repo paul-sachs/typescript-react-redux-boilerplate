@@ -1,11 +1,16 @@
 import * as React from 'react';
-import * as TodoActions from '../../actions/todos';
+import * as TodoActions from 'actions/todos';
 import * as style from './style.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
-import { RootState } from '../../reducers';
-import { Header, MainSection } from '../../components';
+import { RootState } from 'store/reducers';
+import Header from 'components/header';
+import MainSection from 'components/mainSection';
+
+import universal from 'react-universal-component'
+
+const Page1 = universal(() => import('pages/page1'))
 
 export namespace App {
   export interface Props extends RouteComponentProps<void> {
@@ -19,7 +24,7 @@ export namespace App {
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
-export class App extends React.Component<App.Props, App.State> {
+export default class App extends React.Component<App.Props, App.State> {
 
   render() {
     const { todos, actions, children } = this.props;
@@ -28,6 +33,7 @@ export class App extends React.Component<App.Props, App.State> {
         <Header addTodo={actions.addTodo} />
         <MainSection todos={todos} actions={actions} />
         {children}
+        <Page1/>
       </div>
     );
   }

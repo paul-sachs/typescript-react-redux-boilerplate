@@ -6,7 +6,7 @@ Note that this project does not include **Server-Side Rendering**,  **Testing Fr
 
 Ideal for creating React apps from the scratch.
 
-See also: [react-mobx-typescript-boilerplate](https://github.com/rokoroku/react-mobx-typescript-boilerplate)
+Based loosely on initial boilerplate [here](https://github.com/rokoroku/react-redux-typescript-boilerplate)
 
 ## Contains
 
@@ -34,19 +34,19 @@ See also: [react-mobx-typescript-boilerplate](https://github.com/rokoroku/react-
 ## Setup
 
 ```
-$ npm install
+$ yarn
 ```
 
 ## Running
 
 ```
-$ npm start
+$ yarn start
 ```
 
 ## Build
 
 ```
-$ npm run build
+$ yarn build
 ```
 
 # License

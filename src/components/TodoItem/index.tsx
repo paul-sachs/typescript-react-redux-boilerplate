@@ -1,8 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import * as style from './style.css';
-import { TodoTextInput } from '../TodoTextInput';
-import { applyMiddleware } from 'redux';
+import TodoTextInput from '../todoTextInput';
 
 export namespace TodoItem {
   export interface Props {
@@ -17,7 +16,7 @@ export namespace TodoItem {
   }
 }
 
-export class TodoItem extends React.Component<TodoItem.Props, TodoItem.State> {
+export default class TodoItem extends React.Component<TodoItem.Props, TodoItem.State> {
 
   constructor(props?: TodoItem.Props, context?: any) {
     super(props, context);

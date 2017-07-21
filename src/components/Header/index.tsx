@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TodoTextInput } from '../TodoTextInput';
+import TodoTextInput from '../todoTextInput';
 
 export namespace Header {
   export interface Props {
@@ -11,7 +11,7 @@ export namespace Header {
   }
 }
 
-export class Header extends React.Component<Header.Props, Header.State> {
+export default class Header extends React.Component<Header.Props, Header.State> {
 
   constructor(props?: Header.Props, context?: any) {
     super(props, context);

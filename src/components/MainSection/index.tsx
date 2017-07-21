@@ -1,10 +1,10 @@
 import * as React from 'react';
-import * as TodoActions from '../../actions/todos';
+import * as TodoActions from 'actions/todos';
 import * as style from './style.css';
 import { connect } from 'react-redux';
-import { Footer } from '../Footer';
-import { TodoItem } from '../TodoItem';
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../../constants/filters';
+import Footer from 'components/footer';
+import TodoItem from 'components/todoItem';
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from 'constants/filters';
 
 const TODO_FILTERS = {
   [SHOW_ALL]: () => true,
@@ -23,7 +23,7 @@ export namespace MainSection {
   }
 }
 
-export class MainSection extends React.Component<MainSection.Props, MainSection.State> {
+export default class MainSection extends React.Component<MainSection.Props, MainSection.State> {
 
   constructor(props?: MainSection.Props, context?: any) {
     super(props, context);

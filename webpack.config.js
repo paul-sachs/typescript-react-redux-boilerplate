@@ -27,12 +27,12 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js',
   },
-  target: 'web',
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     // Fix webpack's default behavior to not load packages with jsnext:main module
     // https://github.com/Microsoft/TypeScript/issues/11677
-    mainFields: ['main']
+    mainFields: ['main'],
+    modules: [path.resolve(__dirname, "src"), "node_modules"]
   },
   module: {
     loaders: [
@@ -40,7 +40,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: isProduction
-          ? 'awesome-typescript-loader?module=es6'
+          ? 'awesome-typescript-loader'
           : [
             'react-hot-loader',
             'awesome-typescript-loader'
@@ -90,8 +90,7 @@ module.exports = {
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new ExtractTextPlugin({
-      filename: 'styles.css',
-      disable: !isProduction
+      filename: '[name].[contenthash].css'
     }),
     new HtmlWebpackPlugin({
       template: 'index.html'

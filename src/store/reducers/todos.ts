@@ -1,5 +1,5 @@
-import { handleActions } from 'redux-actions';
-import * as Actions from '../constants/actions';
+import { createReducer } from 'redux-act';
+import * as Actions from 'actions/todos';
 
 const initialState: TodoStoreState = [{
   id: 0,
@@ -7,36 +7,36 @@ const initialState: TodoStoreState = [{
   completed: false
 }];
 
-export default handleActions<TodoStoreState, TodoItemData>({
-  [Actions.ADD_TODO]: (state, action) => {
+export default createReducer<TodoStoreState>({
+  [Actions.addTodo.getType()]: (state, payload) => {
     return [{
       id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
       completed: false,
-      ...action.payload,
+      ...payload,
     }, ...state];
   },
 
-  [Actions.DELETE_TODO]: (state, action) => {
-    return state.filter(todo => todo.id !== action.payload);
+  [Actions.deleteTodo.getType()]: (state, payload) => {
+    return state.filter(todo => todo.id !== payload);
   },
 
-  [Actions.EDIT_TODO]: (state, action) => {
+  [Actions.editTodo.getType()]: (state, payload) => {
     return state.map(todo => {
-      return todo.id === action.payload.id
-        ? { ...todo, text: action.payload.text }
+      return todo.id === payload.id
+        ? { ...todo, text: payload.text }
         : todo;
     });
   },
 
-  [Actions.COMPLETE_TODO]: (state, action) => {
+  [Actions.completeTodo.getType()]: (state, payload) => {
     return state.map(todo => {
-      return todo.id === action.payload
+      return todo.id === payload
         ? { ...todo, completed: !todo.completed }
         : todo;
     });
   },
 
-  [Actions.COMPLETE_ALL]: (state, action) => {
+  [Actions.completeAll.getType()]: (state, payload) => {
     const areAllMarked = state.every(todo => todo.completed);
     return state.map(todo => {
       return {
@@ -46,7 +46,7 @@ export default handleActions<TodoStoreState, TodoItemData>({
     });
   },
 
-  [Actions.CLEAR_COMPLETED]: (state, action) => {
+  [Actions.clearCompleted.getType()]: (state, payload) => {
     return state.filter(todo => todo.completed === false);
   }
 }, initialState);

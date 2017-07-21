@@ -16,7 +16,7 @@ export namespace TodoTextInput {
   }
 }
 
-export class TodoTextInput extends React.Component<TodoTextInput.Props, TodoTextInput.State> {
+export default class TodoTextInput extends React.Component<TodoTextInput.Props, TodoTextInput.State> {
 
   constructor(props?: TodoTextInput.Props, context?: any) {
     super(props, context);
